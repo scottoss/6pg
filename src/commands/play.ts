@@ -20,7 +20,7 @@ export default class PlayCommand implements Command {
 
     const player = this.music.joinAndGetPlayer(ctx.member.voice.channel, ctx.channel);
 
-    const maxQueueSize = 5;
+    const maxQueueSize = 30;
     if (player.q.length >= maxQueueSize)
       throw new TypeError(`Max queue size of \`${maxQueueSize}\` reached.`);
 
