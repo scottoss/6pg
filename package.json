@@ -18,7 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "@2pg/music": "^1.1.7",
-    "erela.js": "^2.3.1",
+    "@skyra/audio": "^1.0.2",
     "@2pg/oauth": "^1.0.7",
     "@types/axios": "^0.14.0",
     "@types/chai": "^4.2.10",
