@@ -14,23 +14,23 @@ export default class TtsCommand implements Command {
     module = 'General';
     
     execute = async(ctx: CommandContext) => {
-    const { channel } = message.member.voice;
-    const { ttsPlayer, name: guildName, voice } = message.guild;
+    const { channel } = onmessage.member.voice;
+    const { ttsPlayer, name: guildName, voice } = onmessage.guild;
     const connection = voice ? voice.connection : null;
     const [atLeastOneWord] = options.args;
 
     if (!channel) {
-      message.reply('you need to be in a voice channel first.');
+      onmessage.reply('you need to be in a voice channel first.');
       return;
     }
 
     if (!channel.joinable) {
-      message.reply('I cannot join your voice channel.');
+      onmessage.reply('I cannot join your voice channel.');
       return;
     }
 
     if (!atLeastOneWord) {
-      message.reply('you need to specify a message.');
+      onmessage.reply('you need to specify a message.');
       return;
     }
 
@@ -40,19 +40,19 @@ export default class TtsCommand implements Command {
           ttsPlayer.say(phrases);
         })
         .catch((error) => {
-          message.reply(error);
+          onmessage.reply(error);
         });
     } else {
       channel.join()
         .then(() => {
           logger.info(`Joined ${channel.name} in ${guildName}.`);
-          message.channel.send(`Joined ${channel}.`);
+          onmessage.channel.send(`Joined ${channel}.`);
           splitToPlayable(options.args)
             .then((phrases) => {
               ttsPlayer.say(phrases);
             })
             .catch((error) => {
-              message.reply(error);
+              onmessage.reply(error);
             });
         })
         .catch((error) => {
