@@ -1,3 +1,4 @@
+import { Command, CommandContext, Permission } from './command';
 const { embed } = require('../common/langsEmbed');
 
 
