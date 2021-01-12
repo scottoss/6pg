@@ -14,13 +14,27 @@ export default class StopCommand implements Command {
   
   async execute(ctx: CommandContext) {
 
-    const player = this.music.client.players.get(ctx.guild.id)
-    if (!player)
-      throw new TypeError('Not currently playing any track.');
-    
-    player.stop();    
-    player.leave();
-    
-    await ctx.channel.send(`> Stopped playback, and left voice channel.`);
+const { ttsPlayer, voice } = message.guild;
+    const connection = voice ? voice.connection : null;
+    const channel = voice ? voice.channel : null;
+
+    if (!connection) {
+      message.reply("I'm not in a voice channel.");
+      return;
+    }
+
+    if (!channel) {
+      message.reply('you need to be in a voice channel to do that.');
+      return;
+    }
+
+    ttsPlayer.stop()
+      .then(() => {
+        message.channel.send(`Successfully left the voice channel ${channel}.`);
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }
   }
 }
