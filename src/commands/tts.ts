@@ -17,7 +17,7 @@ export default class TtsCommand implements Command {
     const { channel } = onmessage.member.voice;
     const { ttsPlayer, name: guildName, voice } = onmessage.guild;
     const connection = voice ? voice.connection : null;
-    const [atLeastOneWord] = options.args;
+    const [atLeastOneWord] = Option.args;
 
     if (!channel) {
       onmessage.reply('you need to be in a voice channel first.');
@@ -35,7 +35,7 @@ export default class TtsCommand implements Command {
     }
 
     if (connection) {
-      splitToPlayable(options.args)
+      splitToPlayable(Option.args)
         .then((phrases) => {
           ttsPlayer.say(phrases);
         })
@@ -47,7 +47,7 @@ export default class TtsCommand implements Command {
         .then(() => {
           logger.info(`Joined ${channel.name} in ${guildName}.`);
           onmessage.channel.send(`Joined ${channel}.`);
-          splitToPlayable(options.args)
+          splitToPlayable(Option.args)
             .then((phrases) => {
               ttsPlayer.say(phrases);
             })
