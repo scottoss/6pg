@@ -6,8 +6,8 @@ const allowOver200 = process.env.ALLOW_OVER_200 || require('../../config/setting
 
 
 
-export default class HelpCommand implements Command {
-    name = 'help';
+export default class TtsCommand implements Command {
+    name = 'tts';
     summary = 'Send a tts';
     precondition: Permission = 'SPEAK';
     cooldown = 0;
