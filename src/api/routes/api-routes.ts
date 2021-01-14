@@ -43,7 +43,7 @@ router.post('/error', async (req, res) => {
 });
 
 router.get('/invite', (req, res) => 
-    res.redirect(`https://discordapp.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.DASHBOARD_URL}/dashboard&permissions=8&scope=bot`));
+    res.redirect(`https://discord.com/api/oauth2/authorize?client_id=797821425963499520&permissions=8&redirect_uri=https%3A%2F%2Fdiscordtestbotderpy.herokuapp.com%2Fdashboard&scope=bot`));
 
 router.get('/login', (req, res) => res.redirect(AuthClient.authCodeLink.url));
 
