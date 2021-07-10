@@ -18,7 +18,7 @@ export default class ReadyHandler implements EventHandler {
         this.startedBots.push(bot.user.id);
 
         this.music.initialize();
-        bot.user?.setActivity("testing testing...");
+        bot.user?.setActivity("Made with http://dbot.uk/");
         
         GlobalBots.add(bot);
     }
